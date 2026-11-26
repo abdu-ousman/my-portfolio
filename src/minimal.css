@@ -1,0 +1,113 @@
+/* Minimalist visual refinement — presentation only.
+   No components, content, routes, links or asset paths are changed. */
+:root {
+  --color-background: #101112;
+  --color-foreground: #f7f7f5;
+  --color-card: #17191a;
+  --color-primary: #46d5c8;
+  --color-primary-foreground: #101112;
+  --color-secondary: #1a1e1f;
+  --color-secondary-foreground: #46d5c8;
+  --color-muted: #212526;
+  --color-muted-foreground: #aab2b2;
+  --color-border: #2b3030;
+  --color-highlight: #cf588b;
+  --color-surface: #1b1e1f;
+  --radius: .65rem;
+}
+
+/* Reduced decoration, strong type hierarchy and restrained accents. */
+body { background: #101112; letter-spacing: -.008em; }
+body h1, body h2, body h3 { text-wrap: balance; }
+body p { text-wrap: pretty; }
+
+/* Original photographic background and portrait stay in place. */
+#hero { background: #101112; }
+#hero > div:first-child img { opacity: .2; filter: grayscale(55%) saturate(55%); }
+#hero > div:nth-child(2) {
+  background: linear-gradient(90deg, rgba(16,17,18,.76) 0%, rgba(16,17,18,.48) 55%, rgba(16,17,18,.65) 100%),
+              linear-gradient(0deg, #101112 0%, transparent 38%);
+}
+#hero h1 { letter-spacing: -.055em; line-height: 1.08; font-weight: 700; }
+#hero .glow-text, .glow-text { text-shadow: none; }
+#hero .font-serif { font-family: "Inter", sans-serif; font-style: normal; font-weight: 500; }
+#hero .shadow-2xl { box-shadow: none; }
+#hero .shadow-primary\/20 { --tw-shadow-color: transparent; }
+#hero .rounded-full.border { border-color: rgba(70,213,200,.16); }
+#hero .animate-pulse { animation: none; }
+
+/* Translucent panels are now calm, crisp surfaces, not glowing bubbles. */
+.glass, .glass-strong {
+  background: rgba(24,26,27,.94);
+  border: 1px solid rgba(255,255,255,.085);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+.glow-border, .timeline-glow { box-shadow: none; }
+.soft-card-hover, .card-lift { transition: background-color .2s ease, border-color .2s ease, transform .2s ease; }
+.soft-card-hover:hover, .card-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: none;
+  border-color: rgba(70,213,200,.38);
+}
+
+/* Minimal navbar without any scroll-start flash or light border. */
+.portfolio-navbar, .portfolio-navbar--scrolled, .portfolio-mobile-menu {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+.portfolio-navbar { transition: background-color .22s ease; }
+.portfolio-navbar--scrolled { background-color: rgba(16,17,18,.96); }
+.portfolio-navbar nav > a:first-child span:first-child {
+  border-color: rgba(70,213,200,.18);
+  background: rgba(70,213,200,.07);
+}
+.nav-link-active { background: rgba(255,255,255,.055); }
+
+/* Less visual noise across the sections; retain all content and sections. */
+#about > .pointer-events-none,
+#projects > .absolute,
+#services > .absolute,
+#testimonials > .absolute,
+#contact > .absolute,
+#experience > .absolute { opacity: 0 !important; }
+.section-kicker { font-size: .71rem; letter-spacing: .18em; font-weight: 650; }
+.section-kicker::before { width: 1.25rem; box-shadow: none; }
+#about .font-serif, #projects .font-serif, #services .font-serif,
+#testimonials .font-serif, #contact .font-serif, #experience .font-serif {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+}
+
+/* Project cards: editorial framing with actual screenshots left untouched. */
+#projects article { border-radius: .8rem; }
+#projects article > div:first-child { background: #131617; }
+#projects article .bg-gradient-to-t { opacity: .65; }
+#projects article > div:nth-child(2) { padding: 1.55rem; }
+#projects article h3 { letter-spacing: -.035em; }
+#projects article .rounded-full.bg-surface {
+  background: rgba(255,255,255,.035);
+  border-color: rgba(255,255,255,.09);
+}
+#projects article .group-hover\:scale-105:hover,
+#projects article .group-hover\:scale-\[1\.03\]:hover { transform: none; }
+
+/* Simple readable services, about and contact panels. */
+#services article, #about .glass, #testimonials .glass, #contact .glass {
+  border-radius: .85rem;
+}
+#services article .rounded-2xl, #about .rounded-2xl { border-radius: .65rem; }
+#contact input, #contact textarea { border-radius: .55rem; }
+
+/* Keep original structure and responsive behavior, improve mobile rhythm. */
+@media (max-width: 767px) {
+  #hero h1 { line-height: 1.13; letter-spacing: -.042em; }
+  #hero > div:first-child img { opacity: .12; }
+  #projects article > div:nth-child(2) { padding: 1.2rem; }
+  .portfolio-navbar--scrolled { background-color: rgba(16,17,18,.98); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .soft-card-hover:hover, .card-lift:hover { transform: none; }
+}
