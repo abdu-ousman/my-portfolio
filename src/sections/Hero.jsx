@@ -35,7 +35,7 @@ export const Hero = () => {
           <span className="minimal-hero-art-label" aria-hidden="true">DESIGN / DEVELOPMENT / PROBLEM SOLVING</span>
         </div>
       </div>
-      <div className="minimal-hero-bottom"><span className="minimal-hero-stack">REACT <i/> NODE.JS <i/> EXPRESS <i/> MONGODB</span><a className="minimal-hero-linkedin" href="https://www.linkedin.com/in/abdurahman-ousman/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"><Linkedin size={16}/> LINKEDIN <ArrowUpRight size={13}/></a></div>
+      <div className="minimal-hero-bottom"><span className="minimal-hero-stack">REACT <i/> NODE.JS <i/> EXPRESS <i/> MONGODB</span><a className="minimal-hero-linkedin" href="https://www.linkedin.com/in/abdurahman-ousman/" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn profile" title="LinkedIn"><Linkedin size={19} aria-hidden="true" /></a></div>
     </section>
   );
 };
