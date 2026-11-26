@@ -634,7 +634,7 @@ html, body, #root, button, a, input, select, textarea,
   grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr)!important;
   gap:clamp(32px,5.5vw,90px)!important;
 }
-.studio-about-main .studio-title{max-width:13ch;}
+.studio-about-main .studio-title{max-width:none;}
 .studio-about-main .studio-brief{max-width:49ch;line-height:1.75!important;}
 .studio-about-grid{gap:1px;background:var(--quiet-border);border:1px solid var(--quiet-border);border-radius:10px;overflow:hidden;}
 .studio-about-card{
@@ -713,4 +713,21 @@ html, body, #root, button, a, input, select, textarea,
 }
 @media(prefers-reduced-motion:reduce){
   .studio-service-tile,.viewport-project-arrows button{transition:none!important;}
+}
+
+/* v20: Keep the About title to precisely two lines at every viewport width.
+   The original 13ch max-width was breaking each explicit line a second time. */
+.studio-about-main #about-title{
+  max-width:none!important;
+  width:max-content;
+  max-inline-size:100%;
+  text-wrap:nowrap!important;
+  white-space:nowrap!important;
+}
+.studio-about-main #about-title > span{
+  display:inline;
+  white-space:nowrap!important;
+}
+@media (max-width:420px){
+  .studio-about-main #about-title{font-size:clamp(25px,7.1vw,31px)!important;letter-spacing:-.07em!important;}
 }
