@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowUpRight, Linkedin } from 'lucide-react';
+import { ArrowUpRight, FileDown, Linkedin } from 'lucide-react';
 
 // A deliberately restrained opening panel, inspired by the supplied reference.
 // Original portrait and background paths are preserved so the owner's public assets work unchanged.
@@ -35,7 +35,13 @@ export const Hero = () => {
           <span className="minimal-hero-art-label" aria-hidden="true">DESIGN / DEVELOPMENT / PROBLEM SOLVING</span>
         </div>
       </div>
-      <div className="minimal-hero-bottom"><span className="minimal-hero-stack">REACT <i/> NODE.JS <i/> EXPRESS <i/> MONGODB</span><a className="minimal-hero-linkedin" href="https://www.linkedin.com/in/abdurahman-ousman/" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn profile" title="LinkedIn"><Linkedin size={19} aria-hidden="true" /></a></div>
+      <div className="minimal-hero-bottom">
+        <span className="minimal-hero-stack">REACT <i/> NODE.JS <i/> EXPRESS <i/> MONGODB</span>
+        <div className="minimal-hero-links">
+          <a className="minimal-hero-cv" href="/Abdurahman_Usman_CV.pdf" download="Abdurahman_Usman_CV.pdf" aria-label="Download my CV as PDF" title="Download CV"><FileDown size={19} aria-hidden="true" /></a>
+          <a className="minimal-hero-linkedin" href="https://www.linkedin.com/in/abdurahman-ousman/" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn profile" title="LinkedIn"><Linkedin size={19} aria-hidden="true" /></a>
+        </div>
+      </div>
     </section>
   );
 };

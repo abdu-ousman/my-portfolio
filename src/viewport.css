@@ -828,3 +828,40 @@ html, body, #root, button, a, input, select, textarea,
   .minimal-hero-linkedin { width: 32px; height: 32px; }
   .minimal-hero-linkedin svg { width: 18px !important; height: 18px !important; }
 }
+
+/* v25: Quiet, icon-only CV download beside LinkedIn; leave hero text and skills alone. */
+.minimal-hero-links {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-self: end;
+  gap: 6px;
+}
+.minimal-hero-cv {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #cfd8d8 !important;
+  transition: color 160ms ease, background-color 160ms ease;
+}
+.minimal-hero-cv:hover, .minimal-hero-cv:focus-visible {
+  color: #20b2a6 !important;
+  background: rgba(32,178,166,.09);
+}
+.minimal-hero-cv:focus-visible {
+  outline: 2px solid #20b2a6;
+  outline-offset: 3px;
+}
+.minimal-hero-cv svg { width: 19px !important; height: 19px !important; }
+@media (max-width:850px) {
+  .minimal-hero-links { gap: 2px; }
+  .minimal-hero-cv { width: 32px; height: 32px; }
+  .minimal-hero-cv svg { width: 18px !important; height: 18px !important; }
+}
