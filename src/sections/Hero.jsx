@@ -15,13 +15,15 @@ export const Hero = () => {
       )}
       <div className="minimal-hero-inner">
         <div className="minimal-hero-copy">
-          <span className="minimal-hero-eyebrow">INDEPENDENT DEVELOPER · ETHIOPIA</span>
+          <div className="minimal-hero-meta">
+            <span className="minimal-hero-eyebrow">INDEPENDENT DEVELOPER · ETHIOPIA</span>
+            <a className="minimal-hero-cv" href="/Abdurahman_Usman_CV.pdf" download="Abdurahman_Usman_CV.pdf" aria-label="Download CV as PDF" title="Download CV">CV <Download size={14} aria-hidden="true" /></a>
+          </div>
           <h1 id="hero-name">Hi, I'm<br/><span>Abdurahman<span className="minimal-hero-dot">.</span></span></h1>
           <p className="minimal-hero-role">Full-stack MERN developer<span className="minimal-hero-role-sub">Academic English editor</span></p>
           <div className="minimal-hero-actions">
             <a className="minimal-hero-primary" href="#projects">Selected work <ArrowUpRight size={16} aria-hidden="true" /></a>
             <a className="minimal-hero-secondary" href="#contact">Get in touch</a>
-            <a className="minimal-hero-resume" href="/Abdurahman_Usman_CV.pdf" download="Abdurahman_Usman_CV.pdf" aria-label="Download Abdurahman Usman CV as PDF"><Download size={15} aria-hidden="true" /><span>Download CV</span></a>
           </div>
         </div>
         <div className="minimal-hero-art" aria-label="Portfolio portrait and visual signature">

@@ -830,52 +830,44 @@ html, body, #root, button, a, input, select, textarea,
 }
 
 
-/* v26 — Visible but understated CV action, with the original hero composition preserved. */
-.minimal-hero-actions {
-  flex-wrap: wrap;
-  column-gap: clamp(15px, 2vw, 24px);
-  row-gap: 14px;
+/* v27: A small, purposeful CV utility in the hero eyebrow row.
+   Two primary hero actions remain; the CV no longer creates a third button or mobile row. */
+.minimal-hero-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 32px;
 }
-.minimal-hero-resume {
+.minimal-hero-meta .minimal-hero-eyebrow { margin: 0; white-space: normal; }
+.minimal-hero-cv {
   display: inline-flex;
   flex: 0 0 auto;
   align-items: center;
-  justify-content: center;
-  gap: 9px;
-  padding: 11px 14px;
-  border: 1px solid rgba(173, 193, 189, .30);
-  border-radius: 5px;
-  background: rgba(255, 255, 255, .035);
-  color: #d4dfdc;
+  gap: 6px;
+  padding: 5px 0;
   font-family: Inter, Arial, sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: .015em;
+  font-size: 11px;
   line-height: 1.3;
+  font-weight: 650;
+  letter-spacing: .12em;
+  color: #b8cbca;
+  background: transparent;
+  border: 0;
   text-decoration: none;
-  white-space: nowrap;
-  transition: border-color .18s ease, background-color .18s ease, color .18s ease;
+  transition: color .18s ease;
 }
-.minimal-hero-resume svg { flex-shrink: 0; }
-.minimal-hero-resume:hover {
-  color: #f5fffb;
-  background: rgba(32, 178, 166, .10);
-  border-color: rgba(32, 178, 166, .58);
-}
-.minimal-hero-resume:focus-visible {
-  outline: 2px solid #20b2a6;
-  outline-offset: 3px;
-}
+.minimal-hero-cv:hover { color: #20b2a6; }
+.minimal-hero-cv:focus-visible { outline: 2px solid #20b2a6; outline-offset: 5px; }
+.minimal-hero-actions { flex-wrap: nowrap; }
 @media (max-width: 850px) {
-  .minimal-hero-actions { column-gap: 18px; row-gap: 12px; }
-  .minimal-hero-resume { padding: 9px 11px; font-size: 11px; gap: 7px; }
-  .minimal-hero-resume svg { width: 14px; height: 14px; }
+  .minimal-hero-meta { margin-bottom: 14px; gap: 10px; }
+  .minimal-hero-meta .minimal-hero-eyebrow { font-size: 10px; letter-spacing: .1em; }
+  .minimal-hero-cv { font-size: 10px; letter-spacing: .08em; }
+  .minimal-hero-actions { display: flex; flex-wrap: wrap; gap: 18px; }
 }
-/* On narrow phones, keep the two original actions together and give the CV its own quiet row. */
-@media (max-width: 440px) {
-  .minimal-hero-actions { display: grid; grid-template-columns: max-content max-content; justify-content: start; align-items: center; column-gap: 16px; row-gap: 11px; }
-  .minimal-hero-resume { grid-column: 1 / -1; justify-self: start; padding: 8px 11px; }
+@media (max-width: 360px) {
+  .minimal-hero-meta .minimal-hero-eyebrow { font-size: 9px; }
+  .minimal-hero-actions { column-gap: 14px; }
 }
-@media (prefers-reduced-motion: reduce) {
-  .minimal-hero-resume { transition: none; }
-}
+@media (prefers-reduced-motion: reduce) { .minimal-hero-cv { transition: none; } }
