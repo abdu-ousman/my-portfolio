@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowUpRight, Download, Linkedin } from 'lucide-react';
+import { ArrowUpRight, Linkedin } from 'lucide-react';
 
 // A deliberately restrained opening panel, inspired by the supplied reference.
 // Original portrait and background paths are preserved so the owner's public assets work unchanged.
@@ -15,10 +15,7 @@ export const Hero = () => {
       )}
       <div className="minimal-hero-inner">
         <div className="minimal-hero-copy">
-          <div className="minimal-hero-meta">
-            <span className="minimal-hero-eyebrow">INDEPENDENT DEVELOPER · ETHIOPIA</span>
-            <a className="minimal-hero-cv" href="/Abdurahman_Usman_CV.pdf" download="Abdurahman_Usman_CV.pdf" aria-label="Download CV as PDF" title="Download CV">CV <Download size={14} aria-hidden="true" /></a>
-          </div>
+          <div className="minimal-hero-eyebrow">INDEPENDENT DEVELOPER · ETHIOPIA</div>
           <h1 id="hero-name">Hi, I'm<br/><span>Abdurahman<span className="minimal-hero-dot">.</span></span></h1>
           <p className="minimal-hero-role">Full-stack MERN developer<span className="minimal-hero-role-sub">Academic English editor</span></p>
           <div className="minimal-hero-actions">

@@ -829,45 +829,18 @@ html, body, #root, button, a, input, select, textarea,
   .minimal-hero-linkedin svg { width: 18px !important; height: 18px !important; }
 }
 
-
-/* v27: A small, purposeful CV utility in the hero eyebrow row.
-   Two primary hero actions remain; the CV no longer creates a third button or mobile row. */
-.minimal-hero-meta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  margin-bottom: 32px;
+/* v28: CV lives with the nav actions (rail on desktop, drawer on phones), not in the hero. */
+.viewport-rail-actions { display: flex; flex-direction: column; gap: 2px; margin-top: 15px; padding-top: 15px; border-top: 1px solid #25292a; }
+.viewport-rail-actions .viewport-rail-contact,
+.viewport-rail-actions .viewport-rail-cv { margin-top: 0; }
+.viewport-rail-cv {
+  display: flex; align-items: center; gap: 6px;
+  padding: 12px; font-size: 12px; text-decoration: none;
+  color: #b8cbca; transition: color .18s ease;
 }
-.minimal-hero-meta .minimal-hero-eyebrow { margin: 0; white-space: normal; }
-.minimal-hero-cv {
-  display: inline-flex;
-  flex: 0 0 auto;
-  align-items: center;
-  gap: 6px;
-  padding: 5px 0;
-  font-family: Inter, Arial, sans-serif;
-  font-size: 11px;
-  line-height: 1.3;
-  font-weight: 650;
-  letter-spacing: .12em;
-  color: #b8cbca;
-  background: transparent;
-  border: 0;
-  text-decoration: none;
-  transition: color .18s ease;
-}
-.minimal-hero-cv:hover { color: #20b2a6; }
-.minimal-hero-cv:focus-visible { outline: 2px solid #20b2a6; outline-offset: 5px; }
-.minimal-hero-actions { flex-wrap: nowrap; }
-@media (max-width: 850px) {
-  .minimal-hero-meta { margin-bottom: 14px; gap: 10px; }
-  .minimal-hero-meta .minimal-hero-eyebrow { font-size: 10px; letter-spacing: .1em; }
-  .minimal-hero-cv { font-size: 10px; letter-spacing: .08em; }
-  .minimal-hero-actions { display: flex; flex-wrap: wrap; gap: 18px; }
-}
-@media (max-width: 360px) {
-  .minimal-hero-meta .minimal-hero-eyebrow { font-size: 9px; }
-  .minimal-hero-actions { column-gap: 14px; }
-}
-@media (prefers-reduced-motion: reduce) { .minimal-hero-cv { transition: none; } }
+.viewport-rail-cv:hover, .viewport-rail-cv:focus-visible { color: #20b2a6; }
+.viewport-rail-cv:focus-visible, .viewport-rail-contact:focus-visible { outline: 2px solid #20b2a6; outline-offset: -2px; }
+.viewport-mobile-drawer .viewport-drawer-divider { height: 0; margin: 8px 0 0; border: 0; }
+.viewport-mobile-drawer a.viewport-drawer-action { display: flex; align-items: center; gap: 8px; color: #20b2a6; }
+.viewport-mobile-drawer a.viewport-drawer-action.cv { color: #b8cbca; }
+@media (prefers-reduced-motion: reduce) { .viewport-rail-cv { transition: none; } }
