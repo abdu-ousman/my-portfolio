@@ -1,5 +1,24 @@
 import { useState } from 'react';
-import { ArrowUpRight, Download, Linkedin } from 'lucide-react';
+import { ArrowUpRight, Linkedin } from 'lucide-react';
+
+// Fine teal threads that continue the portrait's signature arcs across the whole panel.
+// Every path overshoots the viewBox and the layer is feathered by a mask, so nothing has a visible start, end or edge.
+const fan = (n, f) => Array.from({ length: n }, (_, k) => f(k));
+const THREADS = [
+  // Main bundle: sweeps in from beyond the lower-left, gently fans open behind the portrait and leaves past the right edge.
+  ...fan(10, (k) => ({
+    d: `M-220 ${690 + k * 13} C 180 ${790 + k * 8}, 520 ${470 - k * 9}, 800 ${400 - k * 14} S 1180 ${250 - k * 12}, 1420 ${250 - k * 20}`,
+    o: 0.9 - k * 0.07,
+  })),
+  // Counter-sweep: a sparser, fainter bundle drifting down through the right side.
+  ...fan(4, (k) => ({
+    d: `M${380 + k * 30} -160 C ${520 + k * 20} 160, 760 ${300 + k * 6}, 980 ${400 + k * 14} S 1250 ${620 + k * 12}, 1340 ${960 + k * 20}`,
+    o: 0.6 - k * 0.1,
+    w: k === 1,
+  })),
+];
+
+
 
 // A deliberately restrained opening panel, inspired by the supplied reference.
 // Original portrait and background paths are preserved so the owner's public assets work unchanged.
@@ -9,16 +28,19 @@ export const Hero = () => {
   return (
     <section id="hero" className="minimal-hero" aria-labelledby="hero-name">
       <div className="minimal-hero-grain" aria-hidden="true" />
+      <svg className="minimal-hero-threads" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+        {THREADS.map((t, i) => (
+          <path key={i} d={t.d} fill="none" vectorEffect="non-scaling-stroke" strokeWidth="1"
+            stroke={t.w ? 'rgba(255,255,255,1)' : 'rgba(31,205,184,1)'} strokeOpacity={t.o} />
+        ))}
+      </svg>
       {!backgroundMissing && (
         <img className="minimal-hero-background" src="/hero-bg-3.jpg" alt="" aria-hidden="true"
           onError={() => setBackgroundMissing(true)} />
       )}
       <div className="minimal-hero-inner">
         <div className="minimal-hero-copy">
-          <div className="minimal-hero-meta">
-            <span className="minimal-hero-eyebrow">INDEPENDENT DEVELOPER · ETHIOPIA</span>
-            <a className="minimal-hero-cv" href="/Abdurahman_Usman_CV.pdf" download="Abdurahman_Usman_CV.pdf" aria-label="Download CV as PDF" title="Download CV">CV <Download size={14} aria-hidden="true" /></a>
-          </div>
+          <div className="minimal-hero-eyebrow">INDEPENDENT DEVELOPER · ETHIOPIA</div>
           <h1 id="hero-name">Hi, I'm<br/><span>Abdurahman<span className="minimal-hero-dot">.</span></span></h1>
           <p className="minimal-hero-role">Full-stack MERN developer<span className="minimal-hero-role-sub">Academic English editor</span></p>
           <div className="minimal-hero-actions">
@@ -27,36 +49,7 @@ export const Hero = () => {
           </div>
         </div>
         <div className="minimal-hero-art" aria-label="Portfolio portrait and visual signature">
-          <svg className="minimal-hero-signature" viewBox="0 0 720 520" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
-            <defs>
-              <linearGradient id="hero-orbit-stroke" x1="0%" y1="90%" x2="100%" y2="10%">
-                <stop offset="0%" stopColor="#4de4d2" stopOpacity=".76" />
-                <stop offset="27%" stopColor="#4de4d2" stopOpacity=".23" />
-                <stop offset="53%" stopColor="#37b9ae" stopOpacity=".10" />
-                <stop offset="82%" stopColor="#66e9da" stopOpacity=".63" />
-                <stop offset="100%" stopColor="#66e9da" stopOpacity=".14" />
-              </linearGradient>
-              <filter id="hero-orbit-halo" x="-40%" y="-60%" width="180%" height="220%">
-                <feGaussianBlur stdDeviation="6" />
-              </filter>
-            </defs>
-            <g fill="none" transform="rotate(-19 360 260)">
-              {Array.from({ length: 13 }, (_, i) => (
-                <ellipse
-                  key={i}
-                  cx="360"
-                  cy="260"
-                  rx={232 + i * 17}
-                  ry={69 + i * 8}
-                  stroke="url(#hero-orbit-stroke)"
-                  strokeWidth={i === 3 || i === 10 ? 1.55 : .8}
-                  opacity={i % 3 === 0 ? .91 : .64}
-                />
-              ))}
-              <ellipse cx="360" cy="260" rx="402" ry="149" stroke="#50e5d7"
-                strokeWidth="5" opacity=".19" filter="url(#hero-orbit-halo)" />
-            </g>
-          </svg>
+          <div className="minimal-hero-signature" aria-hidden="true"><span className="signature-arc one"/><span className="signature-arc two"/><span className="signature-arc three"/></div>
           <div className="minimal-hero-portrait">
             {portraitMissing ? (
               <span className="minimal-hero-initials" role="img" aria-label="Abdurahman Usman">AU</span>
