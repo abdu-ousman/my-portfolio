@@ -845,23 +845,43 @@ html, body, #root, button, a, input, select, textarea,
 .viewport-mobile-drawer a.viewport-drawer-action.cv { color: #b8cbca; }
 @media (prefers-reduced-motion: reduce) { .viewport-rail-cv { transition: none; } }
 
-/* v29: "Melt" — the portrait feathers into the page and one soft teal glow sits behind both image and text,
-   so the picture shares the same light as the copy. No lines, no hard edges. */
+/* v30: Quiet Melt — preserve the v29 composition, with a smaller, softer
+   portrait-centred teal illumination and a more natural edge fade. No orbit lines. */
 .minimal-hero-glow {
-  position: absolute; inset: 0; z-index: 1; pointer-events: none;
-  background: radial-gradient(ellipse 62% 78% at 70% 46%, rgba(32,178,166,.20) 0%, rgba(32,178,166,.075) 42%, transparent 74%);
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 48% 58% at 75% 47%,
+    rgba(32, 178, 166, .12) 0%,
+    rgba(32, 178, 166, .045) 42%,
+    transparent 75%
+  );
 }
 .minimal-hero-signature { display: none; }
 .minimal-hero-portrait {
   width: min(72%, 360px);
-  border: 0; box-shadow: none;
-  background: radial-gradient(circle at 50% 42%, #2f4a47 0%, #213030 58%, transparent 74%);
-  -webkit-mask-image: radial-gradient(circle closest-side, #000 60%, rgba(0,0,0,.55) 82%, transparent 100%);
-          mask-image: radial-gradient(circle closest-side, #000 60%, rgba(0,0,0,.55) 82%, transparent 100%);
+  border: 0;
+  box-shadow: none;
+  background: radial-gradient(circle at 50% 42%, #2b403d 0%, #202c2c 66%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle closest-side, #000 83%, transparent 100%);
+          mask-image: radial-gradient(circle closest-side, #000 83%, transparent 100%);
 }
-@media (max-width: 1050px) { .minimal-hero-portrait { width: min(76%, 300px); } }
+@media (max-width: 1050px) {
+  .minimal-hero-portrait { width: min(76%, 300px); }
+}
 @media (max-width: 850px) {
-  .minimal-hero-glow { background: radial-gradient(ellipse 105% 52% at 50% 24%, rgba(32,178,166,.22) 0%, rgba(32,178,166,.08) 45%, transparent 76%); }
+  .minimal-hero-glow {
+    background: radial-gradient(
+      ellipse 70% 35% at 50% 24%,
+      rgba(32, 178, 166, .10) 0%,
+      rgba(32, 178, 166, .035) 45%,
+      transparent 75%
+    );
+  }
   .minimal-hero-portrait { height: min(29dvh, 250px); width: auto; }
 }
-@media (max-width: 420px) and (max-height: 720px) { .minimal-hero-portrait { height: 23dvh; } }
+@media (max-width: 420px) and (max-height: 720px) {
+  .minimal-hero-portrait { height: 23dvh; }
+}
